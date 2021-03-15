@@ -1,0 +1,446 @@
+/* single */
+
+#presentation,#detailsErgo{
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 64px;
+}
+#presentation > div,#detailsErgo > div{
+  width: 50%;
+}
+.pasImage{
+  background-color: #F2F2F2;
+}
+.Produits .blocTitre{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.sliderProduit .sliderProduit-for,.sliderProduit .sliderProduit-nav{
+  width:80%;
+}
+.sliderProduit .sliderProduit-for .slick-list .slick-track,.sliderProduit .sliderProduit-nav .slick-list .slick-track{
+  width: 100%!important;
+}
+.sliderProduit .sliderProduit-for .slick-list .blocPhoto.slick-slide{
+  position: absolute!important;
+}
+.sliderProduit .sliderProduit-for .slick-list .blocPhoto.slick-slide{
+  overflow: hidden;
+  height:331px!important;
+  width:530px!important;
+  max-width:100%;
+  left: 50%!important;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sliderProduit .sliderProduit-for .slick-list .blocPhoto.slick-slide.slick-active{
+  position: relative!important;
+}
+.sliderProduit .sliderProduit-for .slick-list .blocPhoto.slick-slide img{
+  max-height: 100%;
+  max-width: 100%;
+}
+.sliderProduit .sliderProduit-nav .slick-list .blocPhoto.slick-slide{
+  width:auto!important;
+  height:44px!important;
+  margin-right: 15px;
+  margin-top: 5px;
+}
+.sliderProduit .navSlider{
+  display: flex;
+  align-items: flex-start;
+  padding-top: 40px;
+}
+.sliderProduit .sliderProduit-nav{
+  width:51%;
+}
+.sliderProduit .sliderProduit-nav .slick-list{
+  padding:0 20px!important;
+}
+.sliderProduit .sliderProduit-nav .slick-list .blocPhoto.slick-slide img{
+  height:44px;
+}
+.sliderProduit  .slick-arrow{
+  background-color:transparent;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left:30px;
+  transform: translateY(-50%);
+  z-index:999;
+}
+.sliderProduit  .slick-arrow.slick-next{
+  left:inherit;
+  right:30px;
+}
+.sliderProduit  .slick-arrow:after{
+  display:block;
+  content:'';
+  width:42px;
+  height:42px;
+  border-radius: 42px;
+  background-image: url('../img/preview.svg');
+  background-repeat: no-repeat;
+}
+.sliderProduit  .slick-arrow.slick-next:after{
+  background-image: url('../img/next.svg');
+}
+.btnVideo,.btnVideoClosed{
+  background-color: transparent;
+  background-image: url('../img/icnVideo.svg');
+  background-repeat:no-repeat;
+  background-position: 90% center;
+  color:#666666;
+  padding:15px 53px 15px 21px;
+  box-shadow: 0px 3px 6px #00000017;
+  border: 1px solid #F2F2F2;
+  border-radius: 100px;
+  cursor: pointer;
+}
+h2.icn:before{
+  content:'';
+  display: inline-block;
+  width: 24px;
+  height: 22px;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-right: 21px;
+}
+h2.prix{
+  display: inline-block;
+}
+h2.prix.icn:before{
+    background-image: url('../img/icnTarif.svg');
+}
+h2.lieux.icn:before{
+    background-image: url('../img/icnLieux.svg');
+}
+h2.finance.icn:before{
+    background-image: url('../img/icnFinance.svg');
+}
+h2.finance{
+  margin-bottom: 0!important;
+}
+span.prix{
+  font-size:19px;
+  padding:5px 16px;
+  border-radius: 33px;
+  background-color: #0388DC;
+  color:#FFF;
+  margin-left: 20px;
+  margin-bottom: 35px;
+}
+.details div{
+  padding-left:44px;
+  padding-bottom: 20px;
+}
+.details div ul{
+  padding-left:20px;
+}
+.details div span{
+  font-size: 16px;
+  font-style: italic;
+  color:#666666;
+}
+.ergo{
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.ergo .italic{
+  padding:66px 8% 66px 33%;
+  box-shadow: 0px 6px 10px #00000017;
+  background-image: url('../img/illustration.svg');
+  background-repeat: no-repeat;
+  background-position: 7% center;
+  color:#666666;
+  font-weight: 500;
+  font-style: italic;
+  min-height: 337px;
+}
+.ergo > p{
+  text-align: right;
+  font-size:16px;
+  margin-top: 60px;
+}
+.ergo h2{
+  color:#000;
+}
+.pictoInfo{
+  display: inline-block;
+  content:'';
+  width:20px;
+  height:20px;
+  border-radius: 20px;
+  background-image: url('../img/icnInfo.svg');
+  background-repeat: no-repeat;
+  background-position: center -9px;
+  box-shadow: 0px 6px 10px #00000017;
+  cursor: pointer;
+  position: relative;
+}
+.pictoInfo .blocInfoErgo{
+  display:none;
+  position: absolute;
+  top:0px;
+  left:-450px;
+  width: 644px;
+  height:305px;
+  background-color: #F2F2F2;
+  box-shadow: 0px 6px 10px #00000017;
+  z-index:99;
+  padding: 10px 50px 45px 50px;
+  font-size: 18px;
+  color:#666666;
+  font-weight:bold;
+  border-radius: 12px;
+}
+.pictoInfo .blocInfoErgo h3{
+  color:#000;
+}
+.pictoInfo:hover .blocInfoErgo{
+  display:block;
+}
+.blocProduitsAlter .maj{
+  text-align: right;
+  margin-top: -40px;
+}
+.blocProduitAlter{
+  border-top : 2px solid #F2F2F2;
+  padding-bottom: 45px;
+}
+.blocProduitAlter:first-child{
+  padding-top: 33px;
+  border-top:0px;
+}
+.blocProduitsAlter h2{
+  text-align: center;
+  background-color: #F7F7F7;
+  color:#000;
+  font-weight: 700;
+  padding:33px 0!important;
+}
+.blocProduitsAlter .precision{
+  display:flex;
+  align-items: flex-start;
+}
+.blocProduitsAlter .blocPhoto{
+  width:34%;
+  min-height:331px;
+  padding-right:3%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.blocProduitsAlter .blocPhoto img{
+  max-width: 100%;
+  max-height:300px;
+}
+.blocProduitsAlter .caracteristique{
+  width:48%;
+  padding-right: 7.5%;
+}
+.blocProduitsAlter .caracteristique ul{
+  padding-left:20px;
+}
+.blocProduitsAlter .caracteristique ul li{
+  font-size: 18px;
+  padding:10px 0;
+}
+.blocProduitsAlter .caracteristique ul li:first-child{
+  padding-top:0px;
+}
+.precision span.prix{
+  margin-left: 0px;
+}
+.blocProduitsPlusloin{
+  margin-top: 25px;
+  overflow: hidden;
+  width: 100%;
+}
+.blocProduitsPlusloin h2{
+  background-color: #DAEEFB;
+  border-radius: 100% 100% 0 0;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:#000;
+  font-weight: bold;
+  margin-bottom: 0
+}
+.blocProduitsPlusloin  .produitsPlusLoin{
+  background-color: #DAEEFB;
+  padding-bottom: 110px;
+}
+.sliderProduitsPlusLoin{
+  width: 100%;
+  margin-left: 15%;
+}
+.sliderProduitsPlusLoin .slick-track{
+  height:500px;
+}
+.sliderProduitsPlusLoin a,.blocProduitsTaxoTerm a{
+  margin-right:40px;
+  background-color: #FFF;
+  text-decoration: none;
+  cursor: pointer;
+}
+.blocProduitsTaxoTerm{
+  display:flex;
+  justify-content:flex-start;
+  flex-wrap: wrap;
+}
+.blocProduitsTaxoTerm a{
+  box-shadow: 0px 6px 10px #00000017;
+  border-radius: 8px;
+  margin-bottom: 40px;
+  overflow: hidden;
+}
+.blocProduitsTaxoTerm a:hover{
+  box-shadow: 0px 6px 10px #00000070;
+}
+.blocProduitsTaxoTerm .blocProduitTaxoTerm{
+  width: calc((100% - 80px) / 3);
+}
+.blocProduitsTaxoTerm .blocProduitTaxoTerm:nth-child(3n){
+  margin-right: 0;
+}
+.sliderProduitsPlusLoin .blocPhoto,.blocProduitTaxoTerm .blocPhoto{
+  width:100%;
+  height:263px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.sliderProduitsPlusLoin .blocPhoto img,.blocProduitTaxoTerm .blocPhoto img{
+  max-width: 100%;
+  max-height:100%;
+}
+.sliderProduitsPlusLoin .description,.blocProduitsTaxoTerm .description{
+  padding:33px 38px;
+  color:#000;
+}
+.sliderProduitsPlusLoin .description h3, .blocProduitsTaxoTerm .description h3{
+  margin-top:0;
+  margin-bottom: 14px;
+  font-family: 'Roboto', 'sans-serif';
+  font-size: 22px;
+  font-weight: bold;
+  color:#000;
+}
+.sliderProduitsPlusLoin  .slick-arrow{
+  background-color:transparent;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  position: absolute;
+  top: -90px;
+  left:67%;
+  z-index:999;
+}
+.sliderProduitsPlusLoin  .slick-arrow.slick-next{
+  left:70.3%;
+}
+.sliderProduitsPlusLoin  .slick-arrow:after{
+  display:block;
+  content:'';
+  width:30px;
+  height:30px;
+  border-radius: 30px;
+  background-image: url('../img/previewPlusLoin.svg');
+  background-position: -15px -9px;
+  background-repeat: no-repeat;
+}
+.sliderProduitsPlusLoin  .slick-arrow.slick-next:after{
+  background-image: url('../img/nextPlusLoin.svg');
+}
+.PopUpVideo{
+  display:block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.8);
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.PopUpVideo .contenuVideo{
+  width:80%;
+  background-color: #FFF;
+  padding:30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.PopUpVideo .contenuVideo .btnVideoClosed{
+  background-image: url('../img/icnVideoClosed.png');
+  background-size: 15%;
+}
+/* taxonomies -- filtre */
+#corps > div.filtreTaxo{
+  justify-content: space-between;
+  align-items: center;
+  padding:30px 0px;
+  flex-wrap: wrap;
+}
+.filtreTaxo form{
+  width:81.5%;
+  align-items: center;
+}
+.filtreTaxo form >span,.filtreTaxo form .selectTaxo{
+  margin-right: 20px;
+  width: 17.3%;
+}
+.filtreTaxo form .selectTaxo{
+  min-width: 230px;
+  position: relative;
+}
+.filtreTaxo form .selectTaxo button{
+  width:100%;
+  text-align: left;
+  padding: 13px 17px;
+  background-color: #FFFFFF;
+  border: 1px solid #BBBBBB;
+  border-radius: 50px;
+  font-size: 18px;
+  background-image:url('../img/IconSelectFerme.svg');
+  background-repeat: no-repeat;
+  background-position: 93% center;
+}
+.filtreTaxo form .selectTaxo:hover button{
+  background-image:url('../img/IconSelectOuvert.svg');
+  background-color: #0489DE;
+  color:#fff;
+}
+.filtreTaxo form .selectTaxo:hover .checkbox  {
+  display: block;
+  position: absolute;
+  top:calc(100%);
+  padding-top: 10px;
+}
+.filtreTaxo form .selectTaxo:hover .checkbox div{
+  background-color: #F7F7F7;
+}
+.filtreTaxo form button.btnValue{
+  padding:13px 17px;
+  background: transparent linear-gradient(180deg, #0071B9 0%, #0489DE 100%) 0% 0% no-repeat padding-box;
+  border-radius: 50px;
+  border: 0;
+  box-shadow: 0px 3px 6px #00000029;
+  color:#FFF;
+  font-size: 18px;
+}
+.filtreTaxo span.nbProduits{
+  font-size: 16px;
+  color:#666666;
+}

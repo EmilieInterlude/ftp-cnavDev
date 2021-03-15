@@ -1,0 +1,12 @@
+#evitement,.accessibilite {
+   display: inline-block;
+   color: #555;
+   background: #fff;
+   padding: .5em;
+   position: absolute;
+   left: -99999rem;
+   z-index: 100;
+}
+#evitement:focus {
+   left: 0;
+}

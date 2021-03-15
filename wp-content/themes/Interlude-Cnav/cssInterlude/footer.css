@@ -1,0 +1,52 @@
+footer{
+  background-color: #095AA6;
+  color:#fff;
+  padding:45px 0 105px 0;
+}
+footer .content > div.flex{
+  align-items: center;
+  justify-content:space-between;
+}
+footer .blocLogoFooter{
+  margin-bottom: 20px;
+}
+footer .rsxScx{
+  align-items: center;
+  width:calc(94% - 270px);
+  padding-right:5%;
+}
+footer .rsxScx p{
+  font-family: 'Raleway','sans-serif';
+  font-size: 1.167em;
+  align-items: center;
+  margin: 0 25px;
+}
+footer .pictoRsxScx{
+  display: flex;
+}
+footer .rsxScx a{
+  margin:0 7px;
+  text-decoration: none;
+  display: block;
+}
+footer #menu-menu-footer{
+  display:flex;
+  justify-content: flex-end;
+  padding-right:5%;
+}
+footer #menu-menu-footer li{
+  list-style: none;
+  padding:0 10px;
+  border-left: 1px solid #fff;
+}
+footer #menu-menu-footer li:first-child{
+  border-left: 0px solid #fff;
+}
+footer #menu-menu-footer li a{
+  color:#fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+footer #menu-menu-footer li a:hover{
+  text-decoration: underline;
+}

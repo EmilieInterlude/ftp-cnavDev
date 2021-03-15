@@ -1,0 +1,203 @@
+
+.Accueil .btnBleu:hover{
+  font-weight: bold;
+  text-decoration: underline;
+}
+.Accueil .sliderHeader{
+  position:relative;
+}
+.Accueil .sliderHeader h1{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  font-size:2.333em;
+  color:#fff;
+  z-index:99;
+}
+.Accueil .sliderHeader h1 span{
+  display:block;
+  font-size: 1.167em;
+}
+.Accueil .slick-slide{
+  max-height:758px;
+  overflow: hidden;
+}
+.Accueil .slick-slide img{
+  width:100%;
+  height:auto;
+}
+.Accueil .blocFiltre{
+  background-color: #DAEEFB;
+}
+.Accueil .blocFiltre .content{
+  border-radius: 20px;
+  box-shadow: 0px -18px 20px #00000017;
+  border: 1px solid #F2F2F2;
+  margin-top: -105px;
+  position: relative;
+  z-index:99;
+  background-color: #FFF;
+  border-radius: 36px;
+  padding-bottom: 50px;
+}
+.Accueil .blocFiltre h2{
+  font-size: 1.556em;
+  display: block;
+  background-color: #F2F2F2;
+  padding: 36px 10px 36px 72px;
+  border-radius: 36px 36px 0px 0px;
+  color:#000000;
+  font-weight: bold;
+}
+.Accueil .blocFiltre .col3{
+  padding:20px 74px 40px 74px;
+  justify-content: space-between;
+}
+.Accueil .blocFiltre .col3 .col{
+  width:calc(88.5% / 3);
+}
+.Accueil .blocFiltre .col3 li{
+  list-style: none;
+}
+.Accueil .blocFiltre .col3 li h3{
+  margin:0 0 25px 0;
+  color:#000000;
+  font-size:1.333em;
+  font-weight: bold;
+  position: relative;
+  padding-bottom: 20px;
+}
+.Accueil .blocFiltre .col3 li h3:after{
+  content:'';
+  display: block;
+  width:100%;
+  height:1px;
+  background-color: #095AA6;
+  position: absolute;
+  top:100%;
+  left:0;
+}
+.Accueil .blocFiltre .col3 li ul{
+  padding-left:0;
+}
+.Accueil .blocFiltre .col3 li ul li{
+  padding-bottom:25px;
+}
+.Accueil .blocFiltre .col3 li ul li:last-child{
+  padding-bottom:0px;
+}
+.Accueil .blocFiltre .col3 li ul li a{
+  text-decoration: none;
+  color:#000;
+}
+.Accueil .blocFiltre .col3 li ul li a:hover{
+  text-decoration: underline;
+  font-weight: bold;
+}
+.Accueil .blocFiltre .col3 li ul ul{
+  display:none;
+}
+.Accueil .blocFiltre .col3 .col li.lieux ul{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.Accueil .blocFiltre .col3 .col li.lieux ul li{
+  width:48%;
+}
+.Accueil .blocFiltre .btnBleu{
+    margin:0 auto;
+}
+.Accueil .noConnect{
+  background-color: #DAEEFB;
+  position: relative;
+  margin-bottom: 75px;
+}
+.Accueil .noConnect .content{
+  position: relative;
+  z-index:2;
+}
+.Accueil .noConnect:after{
+  content:'';
+  display: block;
+  width:100%;
+  height:150px;
+  background-color: #DAEEFB;
+  border-radius:100%;
+  position: absolute;
+  top:100%;
+  left:0;
+  transform: translateY(-50%);
+  z-index:1;
+}
+.Accueil .noConnect .flex{
+  justify-content: center;
+  align-items: center;
+  padding:60px 0 20px 0;
+}
+.Accueil .noConnect .blocTexte{
+    margin-left: 6.4%;
+    width:34%;
+}
+.Accueil .noConnect .blocTexte p{
+  margin:0;
+  font-family: 'Raleway','sans-serif';
+  font-size: 1.556em;
+}
+.Accueil .noConnect .blocTexte strong{
+  display: block;
+}
+.Accueil .noConnect .blocTexte .btnBleu{
+  margin-top: 30px;
+  padding:13px 30px;
+}
+.Accueil .zoomProduit{
+  padding-top:75px;
+  padding-bottom:30px;
+}
+.Accueil .zoomProduit h2{
+  font-weight:bold;
+  color:#000;
+}
+.Accueil .zoomProduit .blocProduitsTaxoTerm{
+  margin-top: 40px;
+}
+.Accueil .explications{
+  justify-content: space-between;
+  align-items: center;
+}
+.Accueil .explications img{
+  width:47.43%;
+  height:auto;
+}
+.Accueil .explications .liens{
+  width:48.5%;
+}
+.Accueil .explications .liens a{
+  min-height:140px;
+  padding:37px 75px;
+  border: 1px solid #BBBBBB;
+  border-radius: 8px;
+  box-shadow: 0px 3px 6px #00000029;
+  text-decoration: none;
+  font-family: 'Raleway','sans-serif';
+  font-size: 1.556em;
+  font-weight: bold;
+  color:#000;
+  align-items: center;
+  justify-content: space-between;
+}
+.Accueil .explications .liens a:first-child{
+  margin-bottom: 49px;
+}
+.Accueil .explications .liens a:hover{
+  box-shadow: 0px 3px 6px #00000070;
+}
+.Accueil .explications .liens a span{
+  font-size:0.643em;
+  font-weight:normal;
+}
+.Accueil .explications .liens a:hover span{
+  font-weight: bold;
+}
