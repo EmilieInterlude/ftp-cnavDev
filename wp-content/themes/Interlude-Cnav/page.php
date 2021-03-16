@@ -1,5 +1,5 @@
 <?php
-$containerClass="Page Single Produits";
+$containerClass="Page Standard";
 include("header.php");
 
 ?>
@@ -19,9 +19,16 @@ include("header.php");
 
 		<h1 class="content"><?php the_title();?></h1>
 		<div id="corps" class="content">
-      <img src="<?php echo get_field('test_crop')['url'];?>" alt="">
-      <?php the_content();?>
-      ?>
+<?php $blocGaucheStandard=get_field('blocGaucheStandard');
+			$blocDroitStandard=get_field('blocDroitStandard');
+			if($blocGaucheStandard && $blocDroitStandard):?>
+				<div class="flex col2">
+					<div><?php the_field('blocGaucheStandard')?></div>
+					<div><?php the_field('blocDroitStandard');?></div>
+				</div>
+<?php else:?>
+				<div><?php the_field('blocGaucheStandard')?></div>
+<?php endif;?>
 		</div>
 <?php
 	endwhile; // end of the loop. ?>

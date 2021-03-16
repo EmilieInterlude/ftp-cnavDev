@@ -1,0 +1,19 @@
+.Standard main{
+  clear:both;
+}
+.Standard main:after,.Standard main:before{
+  clear:both;
+  content:'';
+}
+.Standard .col2{
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.Standard .col2 > div{
+  width:98%;
+}
+.Standard .col2 > div img{
+  display: block;
+  margin: 0 auto;
+}

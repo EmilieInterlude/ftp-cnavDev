@@ -13,6 +13,7 @@ Version: 1.0
 @import 'cssInterlude/questionnaires.css';
 @import 'cssInterlude/produits.css';
 @import 'cssInterlude/accueil.css';
+@import 'cssInterlude/standard.css';
 @import 'cssInterlude/footer.css';
 @import 'cssInterlude/header.css';
 
@@ -71,6 +72,14 @@ h4{
 img{
   max-width:100%;
 }
+img.alignleft{
+  float:left;
+  margin-right: 10px;
+}
+img.alignright{
+  float:right;
+  margin-left: 10px;
+}
 #fil-ariane{
   margin-bottom: 50px;
 }
@@ -103,4 +112,10 @@ img{
   width: fit-content;
   text-decoration: none;
   color:#000;
+}
+main .pom-default{
+  background-image: url('img/icnPrint.svg');
+  background-position: center;
+  width:95px;
+  height:95px;
 }

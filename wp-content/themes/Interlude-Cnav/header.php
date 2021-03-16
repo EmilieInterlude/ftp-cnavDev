@@ -43,6 +43,7 @@
 </head>
 <body class="<?php echo $containerClass; ?>">
   <header>
+
 <?php
   $idPost=$post->ID;
   $getIframe=htmlentities($_GET['iframe']);
@@ -90,7 +91,8 @@
 <?php
     if($idPost!=7):
 ?>
-      <div id="fil-ariane" class="content breadcrumbs">
+      <div id="fil-ariane" class="breadcrumbs">
+        <div class="fdHeader"></div>
       	<div class="content">
       		<?php if(function_exists('bcn_display'))
       		{
@@ -99,6 +101,10 @@
       	</div>
       </div>
 <?php
+else:?>
+      <div id="fil-ariane" class="breadcrumbs">
+        <div class="fdHeader"></div>
+      </div><?php
     endif;
   endif;
 ?>

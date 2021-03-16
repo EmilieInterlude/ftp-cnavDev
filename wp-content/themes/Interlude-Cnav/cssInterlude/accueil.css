@@ -1,4 +1,7 @@
 
+.Accueil main{
+  margin-top: -50px;
+}
 .Accueil .btnBleu:hover{
   font-weight: bold;
   text-decoration: underline;

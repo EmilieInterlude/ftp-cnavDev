@@ -26,7 +26,7 @@ include("header.php");
 				<h1><?php the_title();?></h1><?php echo do_shortcode('[print-me target="body"]'); ?>
 		</div>
 		<div id="corps" class="content">
-<?php the_taxonomies();?>
+<?php //the_taxonomies();?>
 			<div id="presentation">
 <?php // Répéteur pour récupérer les diapos de la fiche produit
 				if($sliderProduit):?>

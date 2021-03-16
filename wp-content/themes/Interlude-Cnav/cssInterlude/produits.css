@@ -427,9 +427,32 @@ span.prix{
   position: absolute;
   top:calc(100%);
   padding-top: 10px;
+  border-radius:10px;
+  width:150%;
+  overflow: hidden;
 }
 .filtreTaxo form .selectTaxo:hover .checkbox div{
   background-color: #F7F7F7;
+  padding:10px 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.filtreTaxo form .selectTaxo:hover .checkbox div:first-child{
+  padding-top: 20px;
+  border-radius: 10px 10px 0 0;
+}
+.filtreTaxo form .selectTaxo:hover .checkbox div label{
+  margin-left:5px;
+  width:calc(100% - 20px);
+}
+.filtreTaxo form .selectTaxo:hover .checkbox div input[type="checkbox"]{
+  border:1px solid #BBBBBB;
+  height:15px;
+  width:15px;
+}
+.filtreTaxo form .selectTaxo:hover .checkbox div input[type="checkbox"]:checked + label{
+  color:#0489DE;
 }
 .filtreTaxo form button.btnValue{
   padding:13px 17px;
@@ -443,4 +466,16 @@ span.prix{
 .filtreTaxo span.nbProduits{
   font-size: 16px;
   color:#666666;
+}
+.filtreChoisi{
+  width:100%;
+  margin-top: 30px;
+}
+.filtreChoisi .btnBleu{
+  background-color: #0489DE!important;
+  padding-left: 50px!important;
+  background-image: url('../img/closedChoix.svg');
+  background-repeat: no-repeat;
+  background-position: 20px center ;
+  cursor:pointer;
 }

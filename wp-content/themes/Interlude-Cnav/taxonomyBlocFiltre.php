@@ -72,7 +72,7 @@ endif;
           if(($validation=="OK" && in_array($idTermTaxo,$filtreProduit))|| $idTermTaxo==$term_id):
               $activites.=' checked ';
           endif;
-          $activites.='><label for="'.$idTermTaxo.'">'.$nameTaxo.' ('.$nbProduits.')<label>
+          $activites.='><label for="'.$idTermTaxo.'">'.$nameTaxo.' ('.$nbProduits.')</label>
         </div>';
       endif;
       $nbBoucle++;
@@ -114,7 +114,7 @@ $lieux='
             $lieux.=' checked ';
         endif;
         $lieux.='>
-        <label for="'.$idTermTaxo.'">'.$nameTaxo.' ('.$nbProduits.')<label>
+        <label for="'.$idTermTaxo.'">'.$nameTaxo.' ('.$nbProduits.')</label>
       </div>';
     endforeach;
   $lieux.='
@@ -154,7 +154,7 @@ $fonctions='
             $fonctions.=' checked ';
         endif;
         $fonctions.='>
-        <label for="'.$idTermTaxo.'">'.$nameTaxo.' ('.$nbProduits.')<label>
+        <label for="'.$idTermTaxo.'">'.$nameTaxo.' ('.$nbProduits.')</label>
       </div>';
     endforeach;
   $fonctions.='
@@ -206,7 +206,7 @@ $fonctions='
         if($value!=$term_id):
           $taxoFiltreName=get_term($value)->name;
   ?>
-          <span id="jeTeste" data-taxo="<?php echo $value;?>" class='choixSelect' title="cliquer pour supprimer ce filtre" onclick="deSelect(<?php echo $value;?>);"><?php echo $taxoFiltreName;?></span>
+          <span id="choix<?php echo $value;?>" data-taxo="<?php echo $value;?>" class='choixSelect btnBleu' title="cliquer pour supprimer ce filtre" onclick="deSelect(<?php echo $value;?>);"><?php echo $taxoFiltreName;?></span>
   <?php
         endif;
       }
