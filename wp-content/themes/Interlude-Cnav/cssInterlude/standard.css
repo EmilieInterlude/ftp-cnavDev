@@ -1,5 +1,12 @@
 .Standard main{
   clear:both;
+  padding-bottom:70px;
+}
+.Standard main .btnBleu{
+  margin-top: 40px;
+}
+.Standard main ol,.Standard .col2 > div ul{
+  padding-left: 20px;
 }
 .Standard main:after,.Standard main:before{
   clear:both;
@@ -7,13 +14,84 @@
 }
 .Standard .col2{
   justify-content: space-between;
-  align-items: center;
   flex-wrap: nowrap;
+  font-size: 1.222em;
 }
 .Standard .col2 > div{
   width:98%;
 }
-.Standard .col2 > div img{
+.Standard .col2 > div h3{
+  font-size:1.091em;
+}
+.Standard .col2 > div a{
+  color:#0489DE;
+  text-decoration: none;
+}
+.Standard .col2 > div a:hover{
+  text-decoration: underline;
+  font-weight: bold;
+}
+.Standard .col2 > div img.aligncenter{
   display: block;
   margin: 0 auto;
+}
+.Standard .col2 > div img.alignleft,.Standard .col2 > div img.alignright,.Standard .col2 > div img.alignnone{
+  display: block;
+}
+.Standard .col2 > div ul li{
+  padding:3px 0;
+}
+.Standard .col2 > div form .wpcf7-list-item{
+  margin-left:0!important;
+}
+.Standard .col2 > div form .wpcf7-list-item label > input{
+  margin-right:10px!important;
+}
+.Standard .col2 > div form label{
+  display:flex;
+}
+.Standard .col2 > div form{
+  font-family: 'Roboto', 'sans-serif';
+}
+.Standard .col2 > div .your-message{
+  width:100%;
+}
+.Standard .col2 > div textarea,.Standard .col2 > div input[type="email"]{
+  width:100%;
+  background-color: #F7F7F7;
+  border:1px solid #BBBBBB;
+  padding:24px 32px;
+  font-size:0.909em;
+  border-radius: 8px;
+  font-family: 'Roboto', 'sans-serif';
+}
+.Standard .col2 > div input[type="email"]{
+  background-image: url('../img/@.svg');
+  background-repeat: no-repeat;
+  background-position: 95% center;
+  padding-right: 55px;
+}
+.Standard .col2 > div textarea::placeholder{
+  color:#666666;
+  font-style: italic;
+  font-family: 'Roboto', 'sans-serif';
+  font-size:0.909em;
+}
+.Standard .col2 > div form .btnBleu{
+  border:0;
+  font-family: 'Roboto', 'sans-serif';
+  font-size: 0.818em;
+}
+.Standard .col2 > div form .btnBleu:hover{
+  font-weight: bold;
+  text-decoration: underline;
+}
+.Standard .col2 > div form .btnBleu.wpcf7-submit {
+    cursor: pointer;
+}
+.Standard .col2 > div form .btnBleu.wpcf7-submit:disabled {
+    cursor: not-allowed;
+}
+.Standard .col2 > div .wpcf7 form .wpcf7-response-output{
+  margin: 4em 0.5em 1em;
 }
