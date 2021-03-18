@@ -5,7 +5,7 @@
 .Standard main .btnBleu{
   margin-top: 40px;
 }
-.Standard main ol,.Standard .col2 > div ul{
+.Standard main ol,.Standard main ul{
   padding-left: 20px;
 }
 .Standard main:after,.Standard main:before{
@@ -18,7 +18,7 @@
   font-size: 1.222em;
 }
 .Standard .col2 > div{
-  width:98%;
+  width:49%;
 }
 .Standard .col2 > div h3{
   font-size:1.091em;

@@ -94,10 +94,22 @@
       <div id="fil-ariane" class="breadcrumbs">
         <div class="fdHeader"></div>
       	<div class="content">
-      		<?php if(function_exists('bcn_display'))
-      		{
-      				bcn_display();
-      		}?>
+      		<?php
+
+          if(is_singular( 'enquetes' )):?>
+            <span property="itemListElement" typeof="ListItem">
+              <a property="item" typeof="WebPage" title="Retourner sur la page d'accueil" href="<?php bloginfo('url');?>" class="home">
+                <span property="name">Accueil</span>
+              </a>
+              <meta property="position" content="1">
+            </span> &gt; <span property="itemListElement" typeof="ListItem"><span property="name" class="post post-page current-item">Aidez-nous !</span>
+            <meta property="url" content="http://bwuvaqh.cluster030.hosting.ovh.net/preprod/boite-a-idees/"><meta property="position" content="2"></span>      	</div>
+<?php
+          else:
+            if(function_exists('bcn_display')){
+        				bcn_display();
+        		}
+          endif;?>
       	</div>
       </div>
 <?php

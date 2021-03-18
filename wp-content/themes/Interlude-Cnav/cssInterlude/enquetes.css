@@ -1,0 +1,46 @@
+.Enquetes main{
+  padding-bottom:70px;
+}
+.Enquetes .blocQuest{
+  justify-content: space-between;
+  flex-wrap: nowrap;
+    font-size: 1.222em;
+}
+.Enquetes .blocQuest h3{
+  font-size:1.091em;
+}
+.Enquetes .blocQuest .img{
+  width:39%;
+}
+.Enquetes .blocQuest .questionnaire{
+  width:60%;
+}
+.question{
+  margin:45px 0;
+}
+.question .flex{
+  align-items: center;
+  flex-wrap: wrap;
+}
+.question .flex >.flex{
+  margin-right: 15px;
+  margin-bottom: 10px;
+}
+.question .flex input{
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-right: 7px;
+}
+.question .quest{
+  margin-bottom: 10px;
+  display: block;
+}
+.Enquetes form textarea{
+  margin-top: 15px;
+}
+.Enquetes textarea,.Enquete input[type="email"]{
+  font-size:0.909em;
+}
+.Enquetes form textarea::placeholder{
+  font-size:0.909em;
+}
