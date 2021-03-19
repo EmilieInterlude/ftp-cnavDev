@@ -21,7 +21,7 @@ function creation_faq(){
                     'edit_item'=>__("modifier une question/réponse"),
                     'not_found'=>__("Aucune question/réponse trouvée"),
                     ),
-        'public' => true,
+        'public' => false,
         'show_ui' => true,
         'show_in_menu' => true,
         'show_in_nav_menus' => true,

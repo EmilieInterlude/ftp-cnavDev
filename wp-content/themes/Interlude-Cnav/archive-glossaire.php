@@ -16,10 +16,10 @@ include("header.php");
 	</div>
 </div>
 <main role="main" id="page" class="clearfix">
-	<h1 class="content">Glossaire1</h1>
+	<h1 class="content">Glossaire</h1>
   <div id="corps" class="content">
 <?php
-		$tous='<a href="'.get_bloginfo('url').'/notre-glossaire/">Tous les mots</a>'
+		$tous='<a class="current-cat" href="'.get_bloginfo('url').'/notre-glossaire/">Tous les mots</a>'
 ?>
     <div class="blocTaxoLettre flex">
 <?php

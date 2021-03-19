@@ -29,24 +29,24 @@ footer .rsxScx a{
   text-decoration: none;
   display: block;
 }
-footer #menu-menu-footer{
+footer .menu{
   display:flex;
   justify-content: flex-end;
   padding-right:5%;
 }
-footer #menu-menu-footer li{
+footer .menu li{
   list-style: none;
   padding:0 10px;
   border-left: 1px solid #fff;
 }
-footer #menu-menu-footer li:first-child{
+footer .menu li:first-child{
   border-left: 0px solid #fff;
 }
-footer #menu-menu-footer li a{
+footer .menu li a{
   color:#fff;
   text-decoration: none;
   font-weight: bold;
 }
-footer #menu-menu-footer li a:hover{
+footer .menu li a:hover{
   text-decoration: underline;
 }

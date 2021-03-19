@@ -86,8 +86,21 @@ img.aligncenter{
   display:block;
   margin: 5px auto;
 }
-#fil-ariane{
+#fil-ariane {
   margin-bottom: 50px;
+  font-size: 0.778em;
+  color
+}
+#fil-ariane .content > span{
+  color:#095AA6;
+}
+#fil-ariane a{
+  color:#000;
+  text-decoration: none;
+}
+#fil-ariane a:hover{
+  font-weight: bold;
+  text-decoration: underline;
 }
 #corps > div{
   border-top: 2px solid #F2F2F2;

@@ -56,7 +56,7 @@ include("header.php");
           <strong>Vous êtes non connecté ?</strong>
           Ce site est consultable sans accès à internet
         </p>
-        <a class="btnBleu" href="#" titre="accéder à la page explicative pour accéder au site sans accès à internet">En savoir plus</a>
+        <a class="btnBleu" href="<?php bloginfo('url');?>/consulter-le-site-sans-acces-a-internet/" titre="accéder à la page explicative pour accéder au site sans accès à internet">En savoir plus</a>
       </div>
     </div>
   </div>
@@ -118,8 +118,8 @@ include("header.php");
   <div class="explications content  flex">
     <img src="<?php bloginfo('template_directory');?>/img/accueilLien.svg">
     <div class="liens">
-      <a class="flex" href="#">Pourquoi ce site ? <span class="btnBleu">découvrir</span></a>
-      <a class="flex" href="#">Rester informé <br />des nouveautés <span class="btnBleu">découvrir</span></a>
+      <a class="flex" href="<?php bloginfo('url');?>/pourquoi-ce-site/">Pourquoi ce site ? <span class="btnBleu">découvrir</span></a>
+      <a class="flex" href="<?php bloginfo('url');?>/newsletter/">Rester informé <br />des nouveautés <span class="btnBleu">découvrir</span></a>
     </div>
   </div>
 <?php include('questionnaires.php');?>

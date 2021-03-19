@@ -18,7 +18,7 @@ include("header.php");
 ?>
 
 		<h1 class="content"><?php the_title();?></h1>
-		<div id="corps" class="content">
+		<div id="corps" class="content ">
 <?php $blocGaucheStandard=get_field('blocGaucheStandard');
 			$blocDroitStandard=get_field('blocDroitStandard');
 			if($blocGaucheStandard && $blocDroitStandard):?>
@@ -27,7 +27,7 @@ include("header.php");
 					<div><?php the_field('blocDroitStandard');?></div>
 				</div>
 <?php else:?>
-				<div><?php the_field('blocGaucheStandard')?></div>
+				<div class="standPage"><?php the_field('blocGaucheStandard')?></div>
 <?php endif;?>
 		</div>
 <?php

@@ -101,8 +101,10 @@ function date_fr($format, $timestamp=false) {
 			// replace 'updraft_admin_node' with your node id
 			$wp_admin_bar->remove_node('cf7-style'); //contact form 7
 			$wp_admin_bar->remove_node('new-post'); // créer article
+			$wp_admin_bar->remove_node('new-reponses'); // créer cpt
+			$wp_admin_bar->remove_node('new-user'); // créer nouvel utilisateur
 			$wp_admin_bar->remove_node('comments'); // commentaires
-	    // var_dump($wp_admin_bar->get_nodes());
+	     // var_dump($wp_admin_bar->get_nodes());
 		}
 		add_action('admin_bar_menu', 'shapeSpace_remove_toolbar_node', 999);
 

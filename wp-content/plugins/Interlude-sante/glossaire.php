@@ -21,7 +21,7 @@ function creation_glossaire(){
                     'edit_item'=>__("modifier un mot"),
                     'not_found'=>__("Aucun mot trouvé"),
                     ),
-        'public' => true,
+        'public' => false,
         'show_ui' => true,
         'show_in_menu' => true,
         'show_in_nav_menus' => true,
@@ -31,7 +31,7 @@ function creation_glossaire(){
         'menu_position'      => 5,
         'supports' => array( 'title','author','revisions','editor'),
         'rewrite' => array( 'slug' => 'glossaire', 'with_front' => false ),
-        'menu_icon' =>'dashicons-products'
+        'menu_icon' =>'dashicons-editor-spellcheck'
         );
 
     register_post_type( 'glossaire' , $args );

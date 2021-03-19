@@ -48,3 +48,33 @@
 .FAQ .ui-accordion-content-active p:first-child{
   margin:0;
 }
+.FAQ .blocTaxoLettre {
+  padding:42px 0;
+  width: 100%;
+  justify-content: center;
+}
+.FAQ .blocTaxoLettre .lettre{
+  display:flex;
+  align-items: center;
+  list-style: none;
+  justify-content: center;
+}
+.FAQ .blocTaxoLettre .lettre ul{
+  display:flex;
+  align-items: center;
+}
+.FAQ .blocTaxoLettre .lettre a{
+    text-decoration: none;
+    padding-left: 13px;
+    padding-right: 13px;
+    font-size: 1.111em;
+    color:#000;
+}
+.FAQ .blocTaxoLettre .lettre ul li{
+  list-style: none;
+}
+.FAQ .blocTaxoLettre .lettre ul li.current-cat a,.FAQ .blocTaxoLettre .lettre a.current-cat{
+  text-decoration: underline;
+  font-weight: bold;
+  color:#0388DC;
+}

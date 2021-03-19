@@ -12,6 +12,9 @@
   clear:both;
   content:'';
 }
+.Standard .standPage {
+  font-size: 1.222em;
+}
 .Standard .col2{
   justify-content: space-between;
   flex-wrap: nowrap;
@@ -20,7 +23,7 @@
 .Standard .col2 > div{
   width:49%;
 }
-.Standard .col2 > div h3{
+.Standard .col2 > div h3,  .Standard .standPage{
   font-size:1.091em;
 }
 .Standard .col2 > div a{
