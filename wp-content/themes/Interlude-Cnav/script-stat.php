@@ -3,18 +3,63 @@
     require_once ('admin.php');
     include_once ('./admin-header.php');
 ?>
+<style media="screen">
+  .ui-accordion-header-icon{
+    display:inline-block;
+    width:20px;
+    height:20px;
+    margin-right: 10px;
+    background-image: url('<?php bloginfo('template_directory');?>/img/btnPlus.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .ui-state-active .ui-accordion-header-icon{
+    background-image: url('<?php bloginfo('template_directory');?>/img/btnMoins.svg');
+  }
+  .ui-widget-content{
+    padding-left: 30px;
+  }
+</style>
 <div class="wrap nosubsub">
   <div id="stat">
     <h1>Statistiques des enquêtes</h1>
-    <div class="<?php/*accordionStat*/?>">
+    <div class="accordionStat">
       <?php
       global $wpdb;
       $reqEnquete = "SELECT `ID`
       FROM $wpdb->posts
       WHERE `post_status`='publish' AND `post_type`='enquetes'";
       $enquetes = $wpdb->get_results($reqEnquete);
-
+$contentGlobStat="";
       foreach ($enquetes as $value) {
+
+        while ( have_rows('questionnaireEnquete',$value->ID) ) :the_row();
+          $typeInput="";
+          $typeQuestion=get_sub_field('typeQuestionEnquete',$value->ID);
+          $contentGlobStat.='<h3>'.get_sub_field('questionEnquete',$value->ID).'</h3>';
+            if($typeQuestion != "ouverte"):
+              $itemChoix=get_sub_field('listeChoixPossiblesEnquete',$value->ID);
+              if($itemChoix):
+                $nbItemRep=1;
+                $contentGlobStat.="<table><thead><th></th><th>Oui</th><th>Non</th><th>NSP</th></thead><tbody>";
+                $nbOui=0;
+                $nbNon=0;
+                $nbNSP=get_sub_field('NSPEnquete',$value->ID);
+                while ( have_rows('listeChoixPossiblesEnquete',$value->ID) ) :the_row();
+                  $item=get_sub_field('ChoixPossiblesEnquete',$value->ID);
+                  $itemRep=get_sub_field('item',$value->ID);
+                  $nbOui=get_sub_field('reponseOuiTotaleEnquete',$value->ID);
+                  $nbNon=get_sub_field('reponseNonTotaleEnquete',$value->ID);
+                  $contentGlobStat.='<tr><td>'.$item.'</td><td>'.$nbOui.'</td><td>'.$nbNon.'</td><td>'.$nbNSP.'</td></tr>';
+                  $nbItemRep++;
+                endwhile;
+                $contentGlobStat.='</tbody></table>';
+              endif;
+            else:
+              $contentGlobStat.="<p>Question ouverte : Voir le détail</p>";
+            endif;
+        endwhile;
+
         ?>
         <h2><?php echo get_the_title($value->ID);?></h2>
         <?php
@@ -35,79 +80,60 @@
         $nbParticipants=$the_query->post_count;
 
         if ( $the_query->have_posts() ):
+          $contentDetail="<table>";
+          $contentDetailContent="<tbody>";
+          $contentDetailHead="<thead>";
+          $nbRep=1;
           while ( $the_query->have_posts() ):
             $the_query->the_post();
             $contentGlob="<strong>Nombre de participations : $nbParticipants</strong>";
             $questions=get_field('questionnaireEnqueteReponse');
             $nbQuestRep=1;
+            $contentDetailContent.="<tr>";
+            if($nbRep==1):$contentDetailHead.="<tr>";endif;
             while ( have_rows('questionnaireEnqueteReponse') ) :the_row();
               $typeInput="";
               $typeQuestion=get_sub_field('typeQuestionEnqueteReponse');
-              $contentGlob.='<h3>'.get_sub_field('questionEnqueteReponse').'</h3>';
+              $contentDetailContent.='<td>'.get_sub_field('questionEnqueteReponse').'</td>';
+              if($nbRep==1):$contentDetailHead.='<th>Question'.$nbQuestRep.'</th>';endif;
                 if($typeQuestion != "ouverte"):
                   $itemChoix=get_sub_field('listeChoixPossiblesEnqueteReponse');
-                  if($itemChoix):
                     $nbItemRep=1;
-                    $contentGlob.="<table><thead><th></th><th>Oui</th><th>Non</th><th>NSP</th></thead><tbody>";
                     while ( have_rows('listeChoixPossiblesEnqueteReponse') ) :the_row();
                       $item=get_sub_field('ChoixPossiblesEnqueteReponse');
-                      $contentGlob.='<tr><td>'.$item.'</td><td>nbOui</td><td>nbNon</td><td>nbNSP</td></tr>';
+                      $itemRep=get_sub_field('itemReponse');
+                      $contentDetailContent.='<td>'.$item.'</td><td>'.$itemRep.'</td>';
+                      if($nbRep==1):$contentDetailHead.='<th>Item '.$nbItemRep.'</th><th>Reponse '.$nbItemRep.'</th>';endif;
                       $nbItemRep++;
                     endwhile;
-                    $contentGlob.='</tbody></table>';
-                  endif;
                 else:
-                  $contentGlob.="<p>Question ouverte : Voir le détail</p>";
+                  $itemRep=get_sub_field('textareaReponse');
+                  $contentDetailContent.="<td>$itemRep</td>";
+                  if($nbRep==1):$contentDetailHead.='<th>Réponse ouverte quest'.$nbQuestRep.'</th>';endif;
                 endif;
               $nbQuestRep++;
             endwhile;
-          endwhile;?>
+            $contentDetailContent.="</tr>";
+            if($nbRep==1):$contentDetailHead.="</tr>";endif;
+            $nbRep++;
+          endwhile;
+          $contentDetailHead.="</thead>";?>
           <div class="stat_test accordionStat">
             <h3>Global</h3>
             <div class="glob">
 <?php
-              echo $contentGlob;?>
+              echo $contentGlob.  $contentGlobStat;?>
             </div>
             <h3>Détails</h3>
             <div class="">
-              content detail
+<?php
+              echo $contentDetail. $contentDetailHead. $contentDetailContent."</tbody></table>";
+?>
             </div>
           </div>
           <?php
         endif;
       }?>
-
-
-<?php
-      // 
-      // $variablePost="quest".$nbQuestRep;
-      // $repQuest=$_POST["$variablePost"];
-      // if($itemChoixRep):
-      //   $nbItemRep=1;
-      //   while ( have_rows('listeChoixPossiblesEnquete') ) :the_row();
-      //     $valeurInputQuest="item".$nbItemRep;
-      //     if($typeQuestionRep =="choixUnique" && $repQuest):
-      //       $repQuest=htmlentities($repQuest);
-      //       if($repQuest==$valeurInputQuest):
-      //         $metaValueQuest="Oui";
-      //       else:
-      //         $metaValueQuest="Non";
-      //       endif;
-      //     elseif($typeQuestionRep =="choixMultiple" && $repQuest):
-      //       if(in_array($valeurInputQuest,$repQuest)):
-      //         $metaValueQuest="Oui";
-      //       else:
-      //         $metaValueQuest="Non";
-      //       endif;
-      //     else:
-      //       $metaValueQuest="NSP";
-      //     endif;
-
-
-?>
-
-
-
     </div>
   </div>
 </div>

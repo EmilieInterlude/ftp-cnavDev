@@ -14,7 +14,7 @@ include("header.php");
 <main role="main" id="page" class="clearfix">
 <?php
 	while ( have_posts() ) : the_post();
-		$allerPlusLoinProduit=get_field('allerPlusLoinProduit')/* Relation */
+		// $allerPlusLoinProduit=get_field('allerPlusLoinProduit')/* Relation */
 ?>
 
 		<h1 class="content"><?php the_title();?></h1>

@@ -47,7 +47,12 @@ jQuery( document ).ready(function() {
     $('.PopUpVideo').addClass('hidden');
     $('.PopUpVideo iframe').attr('src', $('.contenuVideo iframe').attr('src'));
   })
-
+  $( ".accordeons").accordion({
+    collapsible: true,
+    active: false,
+    animate: 200,
+    heightStyle: "content"
+  });
 
  $('.slick-arrow').text('');
 });
