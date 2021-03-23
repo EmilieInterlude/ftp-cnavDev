@@ -1,6 +1,7 @@
 <?php
 // Register custom navigation walker
 include('functionsAddPages.php');
+include('functionRole.php');
 function basic_widget_init() {
 	register_nav_menus( array(
 		'primary' => __( 'Navigation', 'Basic Responsive Theme' ),

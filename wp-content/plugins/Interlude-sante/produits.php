@@ -36,14 +36,39 @@ function creation_Produits(){
 
     register_post_type( 'produits' , $args );
 }
+add_action('init', 'creation_produitsMaj');
+function creation_ProduitsMaj(){
+    $args = array(
+        'labels' => array(
+                    'name'=>__( 'ProduitsMaj' ),
+                    'singular_name' => __( 'Produit' ),
+                    'add_new'=>__( "Ajouter un produit" ),
+                    'add_new_item'=>__( "Ajouter un nouveau produit" ),
+                    'edit_item'=>__("modifier un produit"),
+                    'not_found'=>__("Aucun produit trouvé"),
+                    ),
+        'public' => false,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'show_in_nav_menus' => true,
+        'capability_type' => 'post',
+        'hierarchical' => false,
+        'has_archive' => true,
+        'menu_position'      => 5,
+        'supports' => array( 'title','author','revisions'),
+        'rewrite' => array( 'slug' => 'produits-maj', 'with_front' => false ),
+        'menu_icon' =>'dashicons-products'
+        );
 
+    register_post_type( 'produits-maj' , $args );
+}
 //// taxonomy
 
 add_action('init','taxonomyProduit');
 function taxonomyProduit(){
     register_taxonomy(
         'emplois',
-        'produits',
+        array('produits'),
         array(
             'label'=>__('Fonction'),
             'rewrite'=>array(
@@ -65,7 +90,7 @@ function taxonomyProduit(){
     );
     register_taxonomy(
         'activites',
-        'produits',
+        array('produits'),
         array(
             'label'=>__('Activité'),
             'rewrite'=>array(
@@ -87,7 +112,7 @@ function taxonomyProduit(){
     );
     register_taxonomy(
         'lieux',
-        'produits',
+        array('produits'),
         array(
             'label'=>__('Lieux'),
             'rewrite'=>array(
@@ -110,9 +135,11 @@ function taxonomyProduit(){
     register_taxonomy_for_object_type( 'emplois', 'produits' );
     register_taxonomy_for_object_type( 'activites', 'produits' );
     register_taxonomy_for_object_type( 'lieux', 'produits' );
-
+    register_taxonomy_for_object_type( 'emplois', 'produits-maj' );
+    register_taxonomy_for_object_type( 'activites', 'produits-maj' );
+    register_taxonomy_for_object_type( 'lieux', 'produits-maj' );
     // pour l'afficher
     // the_terms( $post->ID, 'Type');
-}
 
+}
 ?>
