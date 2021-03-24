@@ -28,7 +28,35 @@ if($validation=="OK"):
   	$query = new WP_Query( $args );
   else:
     $validation="NO";
+    $itemsArgs2=array(array(
+      'taxonomy' => "$taxo_name",
+      'field' => 'slug',
+      'terms' =>"$term_slug",
+    ));
+    $args2 = array(
+      'post_type' => 'produits',
+      'tax_query' => array(
+          $itemsArgs2
+      ),
+    );
+    $query2 = new WP_Query( $args2 );
+    $nbResultat=$query2->post_count;
   endif;
+else:
+  $itemsArgs=array(array(
+    'taxonomy' => "$taxo_name",
+    'field' => 'slug',
+    'terms' =>"$term_slug",
+  ));
+  $args = array(
+    'post_type' => 'produits',
+    'tax_query' => array(
+        $itemsArgs
+    ),
+  );
+  $query2 = new WP_Query( $args );
+  $nbResultat=$query2->post_count;
+  $validation=="NO";
 endif;
 
 ?>

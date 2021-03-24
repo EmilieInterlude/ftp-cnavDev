@@ -14,7 +14,7 @@ add_action('init', 'creation_produits');
 function creation_Produits(){
     $args = array(
         'labels' => array(
-                    'name'=>__( 'Produits' ),
+                    'name'=>__( 'Ne pas toucher' ),
                     'singular_name' => __( 'Produit' ),
                     'add_new'=>__( "Ajouter un produit" ),
                     'add_new_item'=>__( "Ajouter un nouveau produit" ),
@@ -23,8 +23,8 @@ function creation_Produits(){
                     ),
         'public' => true,
         'show_ui' => true,
-        'show_in_menu' => true,
-        'show_in_nav_menus' => true,
+        'show_in_menu' => false,
+        'show_in_nav_menus' => false,
         'capability_type' => 'post',
         'hierarchical' => false,
         'has_archive' => true,
@@ -40,7 +40,7 @@ add_action('init', 'creation_produitsMaj');
 function creation_ProduitsMaj(){
     $args = array(
         'labels' => array(
-                    'name'=>__( 'ProduitsMaj' ),
+                    'name'=>__( 'Produits' ),
                     'singular_name' => __( 'Produit' ),
                     'add_new'=>__( "Ajouter un produit" ),
                     'add_new_item'=>__( "Ajouter un nouveau produit" ),

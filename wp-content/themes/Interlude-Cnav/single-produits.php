@@ -2,12 +2,10 @@
 $containerClass="Page Single Produits";
 include("header.php");
 $preview=htmlentities($_GET['preview_id']);
-var_dump($preview);
 ?>
 
 <main role="main" id="page" class="clearfix">
 <?php
-if(!$preview):
 	while ( have_posts() ) : the_post();
 		$sliderProduit=get_field('sliderProduit');/* Répéteur */
 		$videoProduit=get_field('videoProduit');
@@ -229,9 +227,6 @@ if(!$preview):
 		endif;?>
 <?php
 	endwhile; // end of the loop.
-else:
-	echo "toto";
-endif;?>
-
+?>
 </main>
 <?php get_footer(); ?>

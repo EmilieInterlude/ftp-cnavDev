@@ -10,9 +10,13 @@ if($term_parent == 0 && $taxo_name=="activites"):
       AND   unionTaxo.`term_taxonomy_id` = termTaxoActivite.`term_taxonomy_id`
       AND unionTaxo.`object_id` IN (SELECT unionTaxo.`object_id`
         FROM  ". $wpdb->prefix."term_relationships AS unionTaxo,
-              ". $wpdb->prefix."term_taxonomy AS termTaxoFonction
+              ". $wpdb->prefix."term_taxonomy AS termTaxoFonction,
+              ". $wpdb->prefix."posts AS posts
         WHERE
-        termTaxoFonction.`parent`=$term_id
+        unionTaxo.`object_id`=posts.`ID`
+        AND posts.`post_type`='produits'
+        AND posts.`post_status`='publish'
+        AND termTaxoFonction.`parent`=$term_id
         AND   unionTaxo.`term_taxonomy_id` = termTaxoFonction.`term_taxonomy_id`
         GROUP BY unionTaxo.`object_id`)
     GROUP BY termTaxoActivite.`term_id`"
@@ -27,9 +31,13 @@ elseif($taxo_name=="activites"):
      AND   unionTaxo.`term_taxonomy_id` = termTaxoActivite.`term_taxonomy_id`
      AND unionTaxo.`object_id` IN (SELECT unionTaxo.`object_id`
        FROM  ". $wpdb->prefix."term_relationships AS unionTaxo,
-             ". $wpdb->prefix."term_taxonomy AS termTaxoFonction
+             ". $wpdb->prefix."term_taxonomy AS termTaxoFonction,
+             ". $wpdb->prefix."posts AS posts
        WHERE
-       termTaxoFonction.`parent`=$term_parent
+       unionTaxo.`object_id`=posts.`ID`
+       AND posts.`post_type`='produits'
+       AND posts.`post_status`='publish'
+       AND termTaxoFonction.`parent`=$term_parent
        AND   unionTaxo.`term_taxonomy_id` = termTaxoFonction.`term_taxonomy_id`
        GROUP BY unionTaxo.`object_id`)
    GROUP BY termTaxoActivite.`term_id`"
@@ -44,7 +52,12 @@ else:
       AND unionTaxo.`object_id` IN (SELECT unionTaxo.`object_id`
         FROM  ". $wpdb->prefix."term_relationships AS unionTaxo,
               ". $wpdb->prefix."term_taxonomy AS termTaxoFonction
-        WHERE termTaxoFonction.`taxonomy` = '".$taxo_name."'
+              ". $wpdb->prefix."posts AS posts
+        WHERE
+        unionTaxo.`object_id`=posts.`ID`
+        AND posts.`post_type`='produits'
+        AND posts.`post_status`='publish'
+        AND termTaxoFonction.`taxonomy` = '".$taxo_name."'
           AND termTaxoFonction.`term_id`=$term_id
         AND   unionTaxo.`term_taxonomy_id` = termTaxoFonction.`term_taxonomy_id`
         GROUP BY unionTaxo.`object_id`)
@@ -189,7 +202,7 @@ $fonctions='
         $nbProduitsTot=0;
       endif;
     else:
-      $nbProduitsTot=$queried_object->count;
+      $nbProduitsTot=$nbResultat;
     endif;
     if($nbProduitsTot<2):
       echo $nbProduitsTot." produit";
