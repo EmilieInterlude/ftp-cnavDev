@@ -19,7 +19,7 @@ function post_produitsMaj($post_id, $post, $update){
   $userRole=$current_user->roles;
   /* id de la fiche à mettre à jour ou à créer car validée par l éditeur ou l'admistrateur */
   $new_post_id=get_field('MAJproduit',$post_id);
-  if (!$new_post_id && $post->post_status == "publish" && $post->post_type == "produits-maj" && (current_user_can('editor') || current_user_can('administrator'))) {
+  if (!$new_post_id && $post->post_status == "publish" && $post->post_type == "produits-maj" && (current_user_can('editor') || current_user_can('administrator')|| current_user_can('administrateurcnav'))) {
     // wp_mail("erouviere@interludesante.com", "Publication", "idPostT ".$new_post_id." old : ".$old ." | new : ".$new, "", array());
     // le post_type produits-maj représente les fiches produits brouillon pour la création de sa fiche produits publiée associée
     // Le traitement ci-dessous est effectué uniquement par la publication réalisée par un éditeur ou un administrateur
@@ -76,6 +76,8 @@ function post_produitsMaj($post_id, $post, $update){
             $wpdb->query($sql_query2);
             $sql_query3 =  "UPDATE $wpdb->postmeta SET `meta_value`='field_6058c9a42df72' WHERE `post_id`=$post_id AND `meta_key`='_MAJproduit'";
             $wpdb->query($sql_query3);
+            // Mise à jour stat fiche produits mise à jour
+            include('function-role-stat-maj.php');
 
   }elseif($new_post_id && ($post->post_status == "publish") && $post->post_type == "produits-maj" && (in_array('editor',$userRole) || in_array('administrator',$userRole))){
     // Traitement de mise à jour des fiches produits publiées associées uniquement par la publication d'un editeur ou un administrateur.
@@ -122,7 +124,10 @@ function post_produitsMaj($post_id, $post, $update){
       // mise à jour des champs ACF de la fiche produit publiée associée
       $wpdb->query($sql_query);
     }
+    // Mise à jour stat fiche produits mise à jour
+    include('function-role-stat-maj.php');
   }
+
 }
 
 // Action à mener si la fiche poduit brouillon est mise à la poubelle -> mettre à la poubelle la fiche produit publiée associée
@@ -167,4 +172,146 @@ function suppressionPost($post_id,$post){
     endif;
   endif;
 }
+
+// Gestion affichage rubrique du back-office
+
+$user = wp_get_current_user();
+$user_ID = $user->ID;
+$user_roles=$user->roles;
+if (!in_array('administrator',$user_roles) && !in_array('editor',$user_roles) && !in_array('administrateurcnav',$user_roles)){ // si pas Interlude
+	function remove_menu_items() {
+        global $menu;
+        // var_dump($menu);
+		$restricted = array(__('Links'), __('Comments'),__('Posts'),__('Articles'));
+		end ($menu);
+	 	while (prev($menu)){
+			$value = explode(' ',$menu[key($menu)][0]);
+			if(in_array($value[0] != NULL?$value[0]:"" , $restricted)){
+		 		unset($menu[key($menu)]);
+             }// fin if
+             unset($menu[30]);/* contact form 7 */
+		}// fin while
+		remove_menu_page('tools.php');
+		remove_menu_page('edit-comments.php');
+		remove_menu_page('edit.php?post_type=acf-field-group'); // Advanced Custom Fields
+		remove_menu_page('shortcodes-ultimate');//shortcodes-ultimate
+    remove_menu_page('plugins.php');
+    // remove_menu_page('themes.php');  //Section Apparence
+	}// fin function remove_menu_items() {
+		add_action('admin_menu', 'remove_menu_items');
+		function remove_submenus() {
+		 global $submenu;
+     // var_dump($submenu);
+		 unset($submenu['index.php'][10]); // Supprimer 'Mises à jour'.
+		 unset($submenu['themes.php'][5]); // Supprimer 'Thèmes'..
+		 }
+		add_action('admin_menu', 'remove_submenus');
+		add_action( 'admin_menu', 'adjust_the_wp_menu', 999 );
+		function adjust_the_wp_menu() {
+		$page = remove_submenu_page( 'themes.php', 'theme-editor.php' ); //Menu Edition de theme
+		}
+
+    function shapeSpace_remove_toolbar_node($wp_admin_bar) {
+    	// replace 'updraft_admin_node' with your node id
+    	$wp_admin_bar->remove_node('cf7-style'); //contact form 7
+    	$wp_admin_bar->remove_node('new-post'); // créer article
+    	$wp_admin_bar->remove_node('new-user'); // créer nouvel utilisateur
+    	$wp_admin_bar->remove_node('comments'); // commentaires
+    	$wp_admin_bar->remove_node('wpseo-menu');
+    	$wp_admin_bar->remove_node('exactmetrics_frontend_button');
+    	$wp_admin_bar->remove_node('updates'); // update wp
+    //  var_dump($wp_admin_bar->get_nodes());
+    }
+    add_action('admin_bar_menu', 'shapeSpace_remove_toolbar_node', 999);
+}elseif(in_array('editor',$user_roles)||in_array('administrateurcnav',$user_roles)){
+  // var_dump($user_roles);
+	function remove_menu_items() {
+		global $menu;
+		$restricted = array(__('Links'), __('Comments'),__('Posts'),__('Articles'),__('Tools'));
+		end ($menu);
+		while (prev($menu)){
+			$value = explode(' ',$menu[key($menu)][0]);
+			if(in_array($value[0] != NULL?$value[0]:"" , $restricted)){
+				unset($menu[key($menu)]);
+			}// fin if
+       unset($menu[30]);/* contact form 7 */
+		}// fin while
+    remove_menu_page('tools.php');
+    remove_menu_page('edit.php?post_type=acf-field-group'); // Advanced Custom Fields
+    remove_menu_page('shortcodes-ultimate');//shortcodes-ultimate
+  }
+	add_action('admin_menu', 'remove_menu_items');
+
+  function remove_submenus() {
+   global $submenu;
+   // var_dump($submenu['options-general.php']);
+   unset($submenu['index.php'][10]); // Supprimer 'Mises à jour'.
+   unset($submenu['themes.php'][5]); // Supprimer 'Thèmes'..
+   unset($submenu['options-general.php'][10]); // Supprimer 'Thèmes'..
+   unset($submenu['options-general.php'][15]); // Supprimer 'Thèmes'..
+   unset($submenu['options-general.php'][20]); // Supprimer 'Thèmes'..
+   unset($submenu['options-general.php'][25]); // Supprimer 'Thèmes'..
+   unset($submenu['options-general.php'][30]); // Supprimer 'Thèmes'..
+   unset($submenu['options-general.php'][40]); // Supprimer 'Thèmes'..
+   unset($submenu['options-general.php'][45]); // Supprimer 'Thèmes'..
+   unset($submenu['options-general.php'][46]); // Supprimer 'Thèmes'..
+   }
+  add_action('admin_menu', 'remove_submenus');
+}else{
+  function remove_menu_items() {
+    global $menu;
+    $restricted = array(__('Links'), __('Comments'),__('Posts'),__('Articles'));
+    end ($menu);
+    while (prev($menu)){
+      $value = explode(' ',$menu[key($menu)][0]);
+      if(in_array($value[0] != NULL?$value[0]:"" , $restricted)){
+        unset($menu[key($menu)]);
+      }// fin if
+    }// fin while
+  }// fin function remove_menu_items() {
+    add_action('admin_menu', 'remove_menu_items');
+}
+
+
+
+//
+// function wpse_custom_menu_order( $menu_ord ) {
+//     if ( !$menu_ord ) return true;
+//     return array(
+//         'index.php', // Dashboard
+// 		'edit.php?post_type=page', // Pages
+//         'separator1', // First separator
+//       	'upload.php', // Media
+// 		'themes.php', // Appearance
+//         'plugins.php', // Plugins
+//         'users.php', // Users
+//         'separator2', // Second separator
+//         'tools.php', // Tools
+//         'options-general.php', // Settings
+//         'separator-last', // Last separator
+// 		'edit.php', // Posts
+//     );
+// }
+// add_filter( 'custom_menu_order', 'wpse_custom_menu_order', 10, 1 );
+// add_filter( 'menu_order', 'wpse_custom_menu_order', 10, 1 );
+//
+
+
+
+
+/// AFFICHE UNIQUEMENT LA PAGE "Travailler au CHRD" pour les DRH ///
+// function posts_for_current_author($query) {
+// 	global $pagenow;
+// 	if( 'edit.php' != $pagenow) {
+// 	    return $query;
+//   }
+// 	global $current_user;
+//   if($current_user->roles[0] == 'editeur_recrutement' && !in_array($query->get('post_type'), array('emplois'))) {
+//     $query->set('post__in', array(245, 247, 249)); //ID de la page "Travailler au CHRD"
+//   }
+//   else if($current_user->roles[0] == 'editeur_ifsi') {
+//     $query->set('post__in', array(243)); //ID de la page "Travailler au CHRD"
+//   }
+// }
+// add_filter('pre_get_posts', 'posts_for_current_author');
 ?>

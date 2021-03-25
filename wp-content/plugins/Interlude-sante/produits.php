@@ -62,6 +62,28 @@ function creation_ProduitsMaj(){
 
     register_post_type( 'produits-maj' , $args );
 }
+add_action('init', 'creation_produitsStat');
+function creation_ProduitsStat(){
+    $args = array(
+        'labels' => array(
+                    'name'=>__( 'Stat Produits' ),
+                    'singular_name' => __( 'Stat Produit' ),
+                    ),
+        'public' => false,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'show_in_nav_menus' => true,
+        'capability_type' => 'post',
+        'hierarchical' => false,
+        'has_archive' => true,
+        'menu_position'      => 5,
+        'supports' => array( 'title','author'),
+        'rewrite' => array( 'slug' => 'produits-stat', 'with_front' => false ),
+        'menu_icon' =>'dashicons-products'
+        );
+
+    register_post_type( 'produits-stat' , $args );
+}
 //// taxonomy
 
 add_action('init','taxonomyProduit');

@@ -21,7 +21,7 @@ function creation_enquetes(){
                     'edit_item'=>__("modifier une enquête"),
                     'not_found'=>__("Aucune enquête trouvée"),
                     ),
-        'public' => false,
+        'public' => true,
         'show_ui' => true,
         'show_in_menu' => true,
         'show_in_nav_menus' => true,

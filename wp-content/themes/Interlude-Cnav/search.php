@@ -3,15 +3,15 @@ $bodyClass="Pages Search";
 include('header.php');
 ?>
 
+<div id="fil-ariane" class="content breadcrumbs">
+	<div class="content">
+		<?php if(function_exists('bcn_display'))
+		{
+				bcn_display();
+		}?>
+	</div>
+</div>
 <main role="main" id="page" class="clearfix">
-    <div id="fil-ariane" class="breadcrumbs">
-        <div class="content">
-        <?php if(function_exists('bcn_display'))
-        {
-            bcn_display();
-        }?>
-        </div>
-    </div>
     <div class="contact-page">
         <div class="content">
 		<h2> Résultats de la recherche :

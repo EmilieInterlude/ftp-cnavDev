@@ -84,32 +84,6 @@ function date_fr($format, $timestamp=false) {
   return $date_fr;
 }
 
-/* masquer menu généraux */
-    function remove_menu_items() {
-     global $menu;
-     $restricted = array(__('Links'), __('Comments'), __('Articles'),__('Posts'));
-     end ($menu);
-     while (prev($menu)){
-     $value = explode(' ',$menu[key($menu)][0]);
-     if(in_array($value[0] != NULL?$value[0]:"" , $restricted)){
-     unset($menu[key($menu)]);}
-     }
-     }
-    add_action('admin_menu', 'remove_menu_items');
-
-		//supprimer élément bar menu
-		function shapeSpace_remove_toolbar_node($wp_admin_bar) {
-			// replace 'updraft_admin_node' with your node id
-			$wp_admin_bar->remove_node('cf7-style'); //contact form 7
-			$wp_admin_bar->remove_node('new-post'); // créer article
-			$wp_admin_bar->remove_node('new-reponses'); // créer cpt
-			$wp_admin_bar->remove_node('new-user'); // créer nouvel utilisateur
-			$wp_admin_bar->remove_node('comments'); // commentaires
-	     // var_dump($wp_admin_bar->get_nodes());
-		}
-		add_action('admin_bar_menu', 'shapeSpace_remove_toolbar_node', 999);
-
-
 
 /*//////////// CUSTOMISATION EDITEUR /////////////////////*/
 function my_mce4_options( $init ) {
@@ -135,21 +109,7 @@ function pagination(){
   ));
 }
 
-/// AFFICHE UNIQUEMENT LA PAGE "Travailler au CHRD" pour les DRH ///
-function posts_for_current_author($query) {
-	global $pagenow;
-	if( 'edit.php' != $pagenow) {
-	    return $query;
-  }
-	global $current_user;
-  if($current_user->roles[0] == 'editeur_recrutement' && !in_array($query->get('post_type'), array('emplois'))) {
-    $query->set('post__in', array(245, 247, 249)); //ID de la page "Travailler au CHRD"
-  }
-  else if($current_user->roles[0] == 'editeur_ifsi') {
-    $query->set('post__in', array(243)); //ID de la page "Travailler au CHRD"
-  }
-}
-add_filter('pre_get_posts', 'posts_for_current_author');
+
 
 // chargement plugin slider
 function interlude_script(){
@@ -174,9 +134,12 @@ function wpse_custom_menu_order( $menu_ord ) {
         'index.php', // Dashboard
 				'edit.php?post_type=page', // Pages
 				'edit.php?post_type=produits', // Pages
+				'edit.php?post_type=produits-maj', // Pages
 				'edit.php?post_type=sondages', // Pages
 				'edit.php?post_type=enquetes', // Pages
 				'edit.php?post_type=faq', // Pages
+				'edit.php?post_type=glossaire',
+				'options', // Pages,
         'separator1', // First separator
       	'upload.php', // Media
 				'themes.php', // Appearance
@@ -202,13 +165,14 @@ function wpc_mime_types($mimes) {
 add_filter('upload_mimes', 'wpc_mime_types');
 
 /* Création page option */
-if( function_exists('acf_add_options_page') ) {
+if( function_exists('acf_add_options_page') && (in_array('administrator',$user_roles)||in_array('editor',$user_roles) || in_array('administrateurcnav',$user_roles))) {
 	// Page principale
+
 	acf_add_options_page(array(
 		'page_title'    => 'Options',
 		'menu_title'    => 'Options',
 		'menu_slug'     => 'options',
-		'position'		=> 5,
+		'position'		=> 1,
 		'capability'    => 'edit_posts',
 		'redirect'      => true
 	));
