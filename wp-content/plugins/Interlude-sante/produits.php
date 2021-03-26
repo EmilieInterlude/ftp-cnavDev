@@ -22,14 +22,14 @@ function creation_Produits(){
                     'not_found'=>__("Aucun produit trouvé"),
                     ),
         'public' => true,
-        'show_ui' => true,
+        'show_ui' => false,
         'show_in_menu' => false,
         'show_in_nav_menus' => false,
         'capability_type' => 'post',
         'hierarchical' => false,
         'has_archive' => true,
         'menu_position'      => 5,
-        'supports' => array( 'title','author','revisions'),
+        'supports' => array( 'title','author'),
         'rewrite' => array( 'slug' => 'produits', 'with_front' => false ),
         'menu_icon' =>'dashicons-products'
         );
@@ -51,6 +51,8 @@ function creation_ProduitsMaj(){
         'show_ui' => true,
         'show_in_menu' => true,
         'show_in_nav_menus' => true,
+        'exclude_from_search' => true,
+        'publicly_queryable' => true,
         'capability_type' => 'post',
         'hierarchical' => false,
         'has_archive' => true,
@@ -70,9 +72,9 @@ function creation_ProduitsStat(){
                     'singular_name' => __( 'Stat Produit' ),
                     ),
         'public' => false,
-        'show_ui' => true,
-        'show_in_menu' => true,
-        'show_in_nav_menus' => true,
+        'show_ui' => false,
+        'show_in_menu' => false,
+        'show_in_nav_menus' => false,
         'capability_type' => 'post',
         'hierarchical' => false,
         'has_archive' => true,
@@ -90,7 +92,7 @@ add_action('init','taxonomyProduit');
 function taxonomyProduit(){
     register_taxonomy(
         'emplois',
-        array('produits'),
+        array('produits','produits-maj','produits-stat'),
         array(
             'label'=>__('Fonction'),
             'rewrite'=>array(
@@ -112,7 +114,7 @@ function taxonomyProduit(){
     );
     register_taxonomy(
         'activites',
-        array('produits'),
+        array('produits','produits-maj','produits-stat'),
         array(
             'label'=>__('Activité'),
             'rewrite'=>array(
@@ -134,7 +136,7 @@ function taxonomyProduit(){
     );
     register_taxonomy(
         'lieux',
-        array('produits'),
+        array('produits','produits-maj','produits-stat'),
         array(
             'label'=>__('Lieux'),
             'rewrite'=>array(
@@ -160,6 +162,9 @@ function taxonomyProduit(){
     register_taxonomy_for_object_type( 'emplois', 'produits-maj' );
     register_taxonomy_for_object_type( 'activites', 'produits-maj' );
     register_taxonomy_for_object_type( 'lieux', 'produits-maj' );
+    register_taxonomy_for_object_type( 'emplois', 'produits-stat' );
+    register_taxonomy_for_object_type( 'activites', 'produits-stat' );
+    register_taxonomy_for_object_type( 'lieux', 'produits-stat' );
     // pour l'afficher
     // the_terms( $post->ID, 'Type');
 

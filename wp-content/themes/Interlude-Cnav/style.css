@@ -31,6 +31,9 @@ Version: 1.0
 html{
   font-size: 18px;
 }
+.Brouillon{
+  background: #f0f0f1;
+}
 body{
   position: relative;
   font-family: 'Roboto', 'sans-serif';
@@ -89,7 +92,6 @@ img.aligncenter{
 #fil-ariane {
   margin-bottom: 50px;
   font-size: 0.778em;
-  color
 }
 #fil-ariane .content > span{
   color:#095AA6;
@@ -176,4 +178,18 @@ form textarea::placeholder{
   font-style: italic;
   font-family: 'Roboto', 'sans-serif';
   font-size:0.909em;
+}
+@media(max-width:1370px) {
+  .content {
+    padding: 0 20px;
+  }
+@media(max-width:768px){
+  .flex {
+    flex-wrap:wrap;
+  }
+
+
+}
+
+
 }

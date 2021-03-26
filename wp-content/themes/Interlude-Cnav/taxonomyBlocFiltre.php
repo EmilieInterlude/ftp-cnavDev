@@ -101,8 +101,13 @@ $lieuxTaxo = $wpdb->get_results(
     AND   unionTaxo.`term_taxonomy_id` = termTaxoActivite.`term_taxonomy_id`
     AND unionTaxo.`object_id` IN (SELECT unionTaxo.`object_id`
       FROM  ". $wpdb->prefix."term_relationships AS unionTaxo,
-            ". $wpdb->prefix."term_taxonomy AS termTaxoFonction
-      WHERE termTaxoFonction.`taxonomy` = '".$taxo_name."'
+            ". $wpdb->prefix."term_taxonomy AS termTaxoFonction,
+            ". $wpdb->prefix."posts AS posts
+      WHERE
+      unionTaxo.`object_id`=posts.`ID`
+      AND posts.`post_type`='produits'
+      AND posts.`post_status`='publish'
+      AND termTaxoFonction.`taxonomy` = '".$taxo_name."'
       AND ( termTaxoFonction.`term_id`=$term_id OR
             termTaxoFonction.`term_id` IN (SELECT termTaxoFonction.`term_id`
               FROM ". $wpdb->prefix."term_taxonomy AS termTaxoFonction
@@ -141,8 +146,13 @@ $fonctionsTaxo = $wpdb->get_results(
     AND   unionTaxo.`term_taxonomy_id` = termTaxoActivite.`term_taxonomy_id`
     AND unionTaxo.`object_id` IN (SELECT unionTaxo.`object_id`
       FROM  ". $wpdb->prefix."term_relationships AS unionTaxo,
-            ". $wpdb->prefix."term_taxonomy AS termTaxoFonction
-      WHERE termTaxoFonction.`taxonomy` = '".$taxo_name."'
+            ". $wpdb->prefix."term_taxonomy AS termTaxoFonction,
+            ". $wpdb->prefix."posts AS posts
+      WHERE
+      unionTaxo.`object_id`=posts.`ID`
+      AND posts.`post_type`='produits'
+      AND posts.`post_status`='publish'
+      AND termTaxoFonction.`taxonomy` = '".$taxo_name."'
       AND ( termTaxoFonction.`term_id`=$term_id OR
             termTaxoFonction.`term_id` IN (SELECT termTaxoFonction.`term_id`
               FROM ". $wpdb->prefix."term_taxonomy AS termTaxoFonction

@@ -1,5 +1,5 @@
 <?php
-$containerClass="Page Single Produits";
+$containerClass="Page Single Produits Brouillon";
 include("header.php");
 $preview=htmlentities($_GET['preview_id']);
 ?>
@@ -21,6 +21,7 @@ $preview=htmlentities($_GET['preview_id']);
 		$oeilErgoProduit=get_field('oeilErgoProduit');
 		$alternativeProduit=get_field('alternativeProduit');/* Répéteur */
 		$allerPlusLoinProduit=get_field('allerPlusLoinProduit');/* Relation */
+
 ?>
 		<div class="blocTitre content">
 				<h1><?php the_title();?></h1><?php echo do_shortcode('[print-me target="body"]'); ?>

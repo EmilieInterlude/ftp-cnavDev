@@ -23,6 +23,22 @@ jQuery( document ).ready(function() {
     dots: false,
     autoplay: false,
     autoplaySpeed: 2000,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2
+        }
+      }
+    ]
   });
   $('.sliderAccueil').slick({
     dots: false,
@@ -30,7 +46,13 @@ jQuery( document ).ready(function() {
     infinite: true,
     speed: 500,
     fade: true,
-    cssEase: 'linear'
+    cssEase: 'linear',
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: "unslick",
+      }
+    ]
   });
 
   maxHauteur=1;
@@ -47,6 +69,7 @@ jQuery( document ).ready(function() {
     $('.PopUpVideo').addClass('hidden');
     $('.PopUpVideo iframe').attr('src', $('.contenuVideo iframe').attr('src'));
   })
+  
   $( ".accordeons").accordion({
     collapsible: true,
     active: false,
@@ -55,7 +78,36 @@ jQuery( document ).ready(function() {
   });
 
  $('.slick-arrow').text('');
+
+ var mobileView = function() {
+  var ww = document.body.clientWidth;
+  if (ww < 768) {
+    $('.accordeonMobile').accordion({
+      collapsible: true,
+      active: false,
+      animate: 200,
+      heightStyle: "content"
+    });
+  } else if (ww >= 768) {
+    $('.accordeonMobile').accordion( "destroy" );
+  };
+};
+jQuery(window).resize(function(){
+  mobileView();
 });
+mobileView();
+
+});
+
+jQuery(window).scroll(function() {
+  var height = $(window).scrollTop();
+  if(height  > 107) {
+    $("#sticky").addClass("sticky");
+  } else{
+    $("#sticky").removeClass("sticky");
+  }
+});
+
 
 function deSelect(idAnnule){
   $('span[data-taxo="'+idAnnule+'"]').remove();

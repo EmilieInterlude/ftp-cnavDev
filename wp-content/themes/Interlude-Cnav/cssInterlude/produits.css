@@ -127,7 +127,7 @@ h2.finance{
   margin-bottom: 0!important;
 }
 span.prix{
-  font-size:19px;
+  font-size:1.056em;
   padding:5px 16px;
   border-radius: 33px;
   background-color: #0388DC;
@@ -143,7 +143,7 @@ span.prix{
   padding-left:20px;
 }
 .details div span{
-  font-size: 16px;
+  font-size: 0.889em;
   font-style: italic;
   color:#666666;
 }
@@ -165,7 +165,7 @@ span.prix{
 }
 .ergo > p{
   text-align: right;
-  font-size:16px;
+  font-size:0.889em;
   margin-top: 60px;
 }
 .ergo h2{
@@ -195,7 +195,7 @@ span.prix{
   box-shadow: 0px 6px 10px #00000017;
   z-index:99;
   padding: 10px 50px 45px 50px;
-  font-size: 18px;
+  font-size: 1em;
   color:#666666;
   font-weight:bold;
   border-radius: 12px;
@@ -249,7 +249,7 @@ span.prix{
   padding-left:20px;
 }
 .blocProduitsAlter .caracteristique ul li{
-  font-size: 18px;
+  font-size: 1em;
   padding:10px 0;
 }
 .blocProduitsAlter .caracteristique ul li:first-child{
@@ -330,7 +330,7 @@ span.prix{
   margin-top:0;
   margin-bottom: 14px;
   font-family: 'Roboto', 'sans-serif';
-  font-size: 22px;
+  font-size: 1.222em;
   font-weight: bold;
   color:#000;
 }
@@ -412,7 +412,7 @@ span.prix{
   background-color: #FFFFFF;
   border: 1px solid #BBBBBB;
   border-radius: 50px;
-  font-size: 18px;
+  font-size: 1em;
   background-image:url('../img/IconSelectFerme.svg');
   background-repeat: no-repeat;
   background-position: 93% center;
@@ -461,10 +461,10 @@ span.prix{
   border: 0;
   box-shadow: 0px 3px 6px #00000029;
   color:#FFF;
-  font-size: 18px;
+  font-size: 1em;
 }
 .filtreTaxo span.nbProduits{
-  font-size: 16px;
+  font-size: 0.889em;
   color:#666666;
 }
 .filtreChoisi{
@@ -478,4 +478,68 @@ span.prix{
   background-repeat: no-repeat;
   background-position: 20px center ;
   cursor:pointer;
+}
+
+@media(max-width:1200px) {
+  .sliderProduitsPlusLoin .slick-arrow {
+    left:65%;
+  }
+
+}
+
+@media(max-width:768px) {
+  .sliderProduit .sliderProduit-for,.sliderProduit .sliderProduit-nav{
+    width:100%;
+  }
+
+  #presentation > div,#detailsErgo > div{
+    width: 100%;
+  }
+  .blocProduitsTaxoTerm .blocProduitTaxoTerm{
+    width:100%;
+    margin : 0 0 20px 0;
+  }
+
+  .ergo .italic {
+    padding: 130px 20px 20px;
+    background-position: top 10px center;
+    background-size: auto 120px;
+  }
+  .blocProduitsAlter .precision {
+    flex-wrap:wrap;
+  }
+
+  .blocProduitsAlter .blocPhoto{
+    width:100%;
+    padding-right:0;
+  }
+  .blocProduitsAlter .blocPhoto img{
+    max-width:100%;
+    height:auto;
+  }
+  .blocProduitsAlter .caracteristique{
+    width:100%;
+    padding-right: 0;
+  }
+
+  .sliderProduitsPlusLoin .slick-arrow {
+    top: -50px;
+    left:0;
+  }
+  .filtreTaxo form {
+    width: 100%;
+    align-items: center;
+  }
+  .filtreTaxo form >span, .filtreTaxo form .selectTaxo {
+    margin-right: 0;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  .filtreTaxo form button.btnValue {
+    width:100%;
+  }
+  .filtreTaxo span.nbProduits {
+    margin-top:10px;
+  }
+
 }

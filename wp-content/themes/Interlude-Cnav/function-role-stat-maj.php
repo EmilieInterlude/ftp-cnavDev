@@ -13,12 +13,35 @@ $argsStatMaj = array(
       );
       $dateMaj=date("Ymd");
 
-      $verifSQL='SELECT  DATE_FORMAT(`post_modified`, "%Y%m%d") FROM '.$wpdb->posts.' WHERE `post_type`="produits-stat" and DATE_FORMAT(`post_modified`, "%Y%m%d")="'.$dateMaj.'" AND `post_title`="'.$new_post_id.'"';
-      $verif=$wpdb->query($verifSQL);
-      $serialize=serialize($verifSQL);
-      $serialize2=serialize($verif);
+      $verifSQL='SELECT  `ID` FROM '.$wpdb->posts.' WHERE `post_type`="produits-stat" and DATE_FORMAT(`post_modified`, "%Y%m%d")="'.$dateMaj.'" AND `post_title`="'.$new_post_id.'" GROUP BY `ID`';
+      $verif=$wpdb->get_row($verifSQL);
+      // $serialize=serialize($verifSQL);
+      // $serialize2=serialize($verif[0]);
+      $newProdStat=$verif->ID;
       if(!$verif):
-          // wp_mail("erouviere@interludesante.com", "Publication", "verif : $serialize2 dont requete $serialize", "", array());
-          wp_insert_post($argsStatMaj);
+        // wp_mail("erouviere@interludesante.com", "Publication", "verif : $serialize2 dont requete $serialize", "", array());
+        $newProdStat=wp_insert_post($argsStatMaj);
+        $taxonomies = get_object_taxonomies($post->post_type);
+        if (!empty($taxonomies) && is_array($taxonomies)):
+         foreach ($taxonomies as $taxonomy) {
+             $post_terms = wp_get_object_terms($post_id, $taxonomy, array('fields' => 'slugs'));
+             // mise à jour des taxonomies de la fiche produits publiée
+             wp_set_object_terms($newProdStat, $post_terms, $taxonomy, false);
+         }
+        endif;
+      else:
+        // wp_mail("erouviere@interludesante.com", "Publication", "verif : $serialize2 dont valeur idStatMaj $newProdStat dont requete $serialize", "", array());
+
+        $sql_DeleteTaxo="DELETE FROM $wpdb->term_relationships WHERE `object_id`=$newProdStat" ;
+        $wpdb->query($sql_DeleteTaxo);
+        $taxonomies = get_object_taxonomies($post->post_type);
+        if (!empty($taxonomies) && is_array($taxonomies)):
+         foreach ($taxonomies as $taxonomy) {
+             $post_terms = wp_get_object_terms($post_id, $taxonomy, array('fields' => 'slugs'));
+             // mise à jour des taxonomies de la fiche produits publiée
+             wp_set_object_terms($newProdStat, $post_terms, $taxonomy, false);
+         }
+        endif;
       endif;
+
 ?>
